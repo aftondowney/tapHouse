@@ -1,3 +1,6 @@
+///child of appComponent
+///parent of KegComponent, EditKegDetailsComponent, newKegComponent
+
 import {Component, EventEmitter} from 'angular2/core';
 import {KegComponent} from './keg.component';
 import {Keg} from './keg.model';
@@ -41,9 +44,9 @@ export class KegListComponent {
     this.selectedKeg = clickedKeg;
     this.onKegSelect.emit(clickedKeg);
   }
-  createKeg(brewery: string, name: string, type: string, abv: number, price: number): void {
+  createKeg(brewery: string, name: string, abv: number, price: number): void {
     this.kegList.push(
-      new Keg(brewery, name, type, abv, price, this.kegList.length)
+      new Keg(brewery, name, abv, price, this.kegList.length)
     );
   }
   onChange(filterOption) {

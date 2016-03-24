@@ -1,3 +1,5 @@
+///child of KegListComponent
+
 import {Component} from 'angular2/core';
 import {Keg} from './keg.model';
 
@@ -6,15 +8,10 @@ import {Keg} from './keg.model';
   inputs: ['keg'],
   template: `
   <div>
-    <input *ngIf="keg.empty" type="checkbox" checked (click)="toggleEmpty(false)"/>
-    <input *ngIf="!keg.empty" type="checkbox" (click)="toggleEmpty(true)"/>
-    <label>{{ keg.name }}</label>
+    <li><h3>{{ keg.name }}</h3></li>
   </div>
   `
 })
 export class KegComponent {
   public keg: Keg;
-  toggleEmpty(setState: boolean) {
-    this.keg.empty = setState
-  }
 }
