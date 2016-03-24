@@ -13,9 +13,9 @@ import {EmptyPipe} from './empty.pipe';
   directives: [KegComponent, EditKegDetailsComponent, newKegComponent],
   template: `
     <select (change)="onChange($event.target.value)" class="filter">
-      <option value="all">Show All</option>
-      <option value="empty">Show Empty</option>
-      <option value="notEmpty" selected="selected">Show Not Empty</option>
+      <option value="all" selected="selected">Show All</option>
+      <option value="empty">Show Full</option>
+      <option value="notEmpty">Show Not Full</option>
     </select>
     <keg-display *ngFor="#currentKeg of kegList | empty:filterEmpty"
       (click)="kegClicked(currentKeg)"

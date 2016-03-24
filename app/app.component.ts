@@ -18,7 +18,10 @@ import {Keg} from './keg.model';
 export class AppComponent {
   public kegs: Keg[];
   constructor(){
-    this.kegs = [];
+    this.kegs = [
+      new Keg("Lagunitas", "IPA", "IPA", 7, 5, 0),
+      new Keg("Russian River", "Pliny the Elder", "DIPA", 8, 6, 1)
+    ];
   }
   kegWasSelected(clickedKeg: Keg): void {
     console.log(clickedKeg);

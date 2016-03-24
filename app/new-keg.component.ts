@@ -13,7 +13,7 @@ import {Keg} from './keg.model';
       <input placeholder="Type" class="input-lg" type="text" #newType><br>
       <input placeholder="Abv" class="input-lg" type="number" #newAbv><br>
       <input placeholder="Price" class="input-lg" type="number" #newPrice><br>
-      <button (click)="addKeg('Brewery', 'Name', 'Type', Abv, Price)" class="btn-success btn-lg add-button">Add</button>
+      <button (click)="addKeg('Brewery', 'Name', 'Type', 'Abv', 'Price')" class="btn-success btn-lg add-button">Add</button>
     </div>
     <div class="col-sm-4">
     </div>
