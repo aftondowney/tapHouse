@@ -4,6 +4,7 @@ import {Keg} from './keg.model';
 
 @Component({
   selector: 'my-app',
+  directives: [KegListComponent],
   template: `
     <div class="container">
        <h1>Tap Room</h1>
