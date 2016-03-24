@@ -1,5 +1,5 @@
 {
-  "name": "angular2-skeleton-app",
+  "name": "taphouse",
   "version": "1.0.0",
   "scripts": {
     "start": "npm run tsc:w",
@@ -36,5 +36,16 @@
     "lite-server": "^2.1.0",
     "typescript": "^1.8.2",
     "typings": "^0.6.8"
-  }
+  },
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aftondowney/tapHouse.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/aftondowney/tapHouse/issues"
+  },
+  "homepage": "https://github.com/aftondowney/tapHouse#readme",
+  "description": ""
 }
