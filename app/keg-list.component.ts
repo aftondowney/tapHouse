@@ -1,32 +1,53 @@
 import {Component, EventEmitter} from 'angular2/core';
+import {KegComponent} from './keg.component';
 import {Keg} from './keg.model';
+import {EditKegDetailsComponent} from './edit-keg-details.component';
+import {newKegComponent} from './new-keg.component';
+import {EmptyPipe} from './empty.pipe';
 
 @Component({
-  selector: 'new-task',
+  selector:'keg-list',
+  inputs: ['kegList'],
+  outputs: ['onKegSelect'],
+  pipes: [EmptyPipe],
+  directives: [KegComponent, EditKegDetailsComponent, newKegComponent],
   template: `
-  <div class="keg-form">
-    <h3>Add a new keg:</h3>
-    <input placeholder="Brewery" class="col-sm-8 input-lg" #newBrewery>
-    <input placeholder="Name" class="col-sm-8 input-lg" #newName>
-    <input placeholder="Type" class="col-sm-8 input-lg" #newType>
-    <input placeholder="Abv" class="col-sm-8 input-lg" #newAbv>
-    <input placeholder="Price" class="col-sm-8 input-lg" #newPrice>
-    <button (click)="addKeg(newBrewery, newName, newType, newAbv, newPrice)" class="btn-success btn-lg add-button">Add</button>
-  </div>
+    <select (change)="onChange($event.target.value)" class="filter">
+      <option value="all">Show All</option>
+      <option value="empty">Show Empty</option>
+      <option value="notEmpty" selected="selected">Show Not Empty</option>
+    </select>
+    <keg-display *ngFor="#currentKeg of kegList | empty:filterEmpty"
+      (click)="kegClicked(currentKeg)"
+      [class.selected]="currentKeg === selectedKeg"
+      [keg]="currentKeg">
+    </keg-display>
+    <edit-keg-details *ngIf="selectedKeg" [keg]="selectedKeg">
+    </edit-keg-details>
+    <new-keg (onSubmitNewKeg)="createKeg($event)"></new-keg>
   `
 })
 
-export class newKegComponent {
-  public onSubmitNewKeg: EventEmitter<String>;
-  constructor(){
-    this.onSubmitNewKeg = new EventEmitter();
+export class KegListComponent {
+  public kegList: Keg[];
+  public onKegSelect: EventEmitter<Keg>;
+  public selectedKeg: Keg;
+  public filterEmpty: string = "notEmpty";
+  constructor() {
+    this.onKegSelect = new EventEmitter();
   }
-  addKeg(userBrewery: HTMLInputElement) {
-    this.onSubmitNewKeg.emit(userBrewery.value, userName.value, userType.value, userAbv.value, userPrice.value);
-    userBrewery.value = "";
-    userName.value = "";
-    userType.value = "";
-    userAbv.value = "";
-    userType.value = "";
+  kegClicked(clickedKeg: Keg): void {
+    console.log('child', clickedKeg);
+    this.selectedKeg = clickedKeg;
+    this.onKegSelect.emit('clickedKeg');
+  }
+  createKeg(brewery: string, name: string, type: string, abv: number, price: number): void {
+    this.taskList.push(
+      new Keg(brewery, name, type, abv, price, this.kegList.length)
+    );
+  }
+  onChange(filterOption) {
+    this.filterEmpty = filterOption;
+    console.log(this.filterEmpty);
   }
 }
