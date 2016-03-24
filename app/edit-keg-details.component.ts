@@ -7,7 +7,7 @@ import {Keg} from './keg.model';
   template: `
   <div class="keg-form">
     <h3>Edit Keg Details</h3>
-    <input [(ngModel)]="keg.brewery" class="col-sm-8 input-lg task-form"/>
+    <input [(ngModel)]="keg.brewery" class="col-sm-8 input-lg keg-form"/>
     </div>
   `
 })

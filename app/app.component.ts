@@ -15,11 +15,11 @@ import {Keg} from './keg.model';
 })
 
 export class AppComponent {
-  public kegs: Kegs[];
+  public kegs: Keg[];
   constructor(){
     this.kegs = [];
   }
-  taskWasSelected(clickedKeg: Keg): void {
+  kegWasSelected(clickedKeg: Keg): void {
     console.log(clickedKeg);
   }
 }

@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {Task} from './keg.model';
+import {Keg} from './keg.model';
 
 @Component({
   selector: 'keg-display',

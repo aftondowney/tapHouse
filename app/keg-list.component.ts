@@ -39,10 +39,10 @@ export class KegListComponent {
   kegClicked(clickedKeg: Keg): void {
     console.log('child', clickedKeg);
     this.selectedKeg = clickedKeg;
-    this.onKegSelect.emit('clickedKeg');
+    this.onKegSelect.emit(clickedKeg);
   }
   createKeg(brewery: string, name: string, type: string, abv: number, price: number): void {
-    this.taskList.push(
+    this.kegList.push(
       new Keg(brewery, name, type, abv, price, this.kegList.length)
     );
   }

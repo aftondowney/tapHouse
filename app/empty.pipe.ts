@@ -10,11 +10,11 @@ export class EmptyPipe implements PipeTransform {
     var desiredEmptySate = args[0];
     if(desiredEmptySate === "empty") {
       return input.filter((keg) => {
-        return task.done;
+        return keg.empty;
       });
     } else if(desiredEmptySate === "notEmpty") {
       return input.filter((keg) => {
-        return !keg.done;
+        return !keg.empty;
       });
     } else {
       return input;
